@@ -6,6 +6,7 @@
 package esinf;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  *
@@ -43,20 +44,31 @@ public class Invoice implements Comparable<Invoice> {
         this.date = date;
     }
 
-   @Override
+    @Override
     public boolean equals(Object obj) {
-       
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Invoice other = (Invoice) obj;
+        return Objects.equals(this.reference, other.reference);
     }
+
+   
     
     @Override
     public int hashCode() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return reference.hashCode();
     }
 
     @Override
     public int compareTo(Invoice o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return reference.compareTo(o.reference);
     }
 
 }

@@ -5,6 +5,8 @@
  */
 package esinf;
 
+import java.util.Objects;
+
 /**
  *
  * @author DEI-ISEP
@@ -47,21 +49,32 @@ public class Product implements Comparable<Product> {
     public void setPrice(long price) {
         this.price = price;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
-       
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Product other = (Product) obj;
+        return Objects.equals(this.identification, other.identification);
     }
+    
+    
     
     @Override
     public int hashCode() {
-        throw new UnsupportedOperationException("Not supported yet.");
+       return identification.hashCode();
     }
 
     @Override
     public int compareTo(Product p) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.identification.compareTo(p.identification);
     }
 
 }
